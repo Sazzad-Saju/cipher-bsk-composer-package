@@ -30,7 +30,7 @@ To use in your project get the encrypt and decrypt function from object deconstr
     echo "Decrypted Message: $decryptedMessage\n";
     
     // Example output:
-    // Encrypted Message: 532F395A5A3F7C773B322F3E3C2E4D74675C6F7B5B4B39775A2667666C737A341025276556267441424B783F6C4F5F754B45645071777933
+    // Encrypted Message: 7B4D5249784F285E6433232166594C6A5A5A3322532A7C4E4F72697D2B4C52515F7400753644674061576C254E47724635612920714C6A21
     // Decrypted Message: Hajee Mohammad Danesh Science and Technology University
 ```
 
