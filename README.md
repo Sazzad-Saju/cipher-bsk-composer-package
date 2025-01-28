@@ -18,8 +18,8 @@ To use in your project get the encrypt and decrypt function from object deconstr
     require 'vendor/autoload.php';
     use CipherBsk\CipherBsk;
 
-    $message = "Hajee Mohammad Danesh Science and Technology University"
-    $key = "Hstu@5200"
+    $message = "Hajee Mohammad Danesh Science and Technology University";
+    $key = "Hstu@5200";
 
     $encryptedMessage = $cipherBsk->encrypt($message, $key);
     echo "Encrypted Message: $encryptedMessage\n";
