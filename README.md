@@ -20,6 +20,8 @@ To use in your project get the encrypt and decrypt function from object deconstr
 
     $message = "Hajee Mohammad Danesh Science and Technology University";
     $key = "Hstu@5200";
+    
+    $cipherBsk = new CipherBsk();
 
     $encryptedMessage = $cipherBsk->encrypt($message, $key);
     echo "Encrypted Message: $encryptedMessage\n";
