@@ -1,0 +1,27 @@
+{
+    "name": "sham3r/cipher-bsk",
+    "description": "A lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library aims to provide robust data security with an easy-to-use API. For more details, visit: https://bit.ly/cipher-bsk",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "CipherBsk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sazzad Saju",
+            "email": "saju.cse.hstu@gmail.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "CipherBsk\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    }
+}

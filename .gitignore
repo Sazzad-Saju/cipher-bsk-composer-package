@@ -1,0 +1,48 @@
+# Ignore the Composer vendor directory
+/vendor/
+
+# Ignore Composer's lock file
+composer.lock
+
+# Ignore PHPUnit cache and result files
+.phpunit.result.cache
+
+# Ignore OS-specific or editor-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific files
+/.idea/
+/.vscode/
+/nbproject/
+
+# Ignore logs and temporary files
+/logs/
+*.log
+*.cache
+*.tmp
+
+# Ignore environment and sensitive configuration files
+.env
+.env.*.local
+
+# Ignore compiled or cached files
+/cache/
+/storage/
+
+# Ignore built files
+build/
+dist/
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore backups and archives
+*.bak
+*.swp
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore test-specific generated files
+/test-results/
