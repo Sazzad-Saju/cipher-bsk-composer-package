@@ -1,6 +1,11 @@
 # cipher-bsk-composer-package
 Bornomala Symmetric Key (BSK) stream cipher, is a lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library aims to provide robust data security with an easy-to-use API. For more details, visit: https://bit.ly/cipher-bsk
 
+### 🔐 New in v1.5.0
+- Added `secureHash()` and `verifyHash()` for dual-layer password encryption.
+- Added Laravel integration (config, service provider, and facade).
+- Backward compatible with v1.0.
+
 ## Installation/Launch
 
 Install the package via Composer:
@@ -13,7 +18,9 @@ composer require sham3r/cipher-bsk
 ## Usage
 To use in your project get the encrypt and decrypt function from object deconstruction
 
-```
+### Basic Encryption/Decryption
+
+```php
 <?php
     require 'vendor/autoload.php';
     use CipherBsk\CipherBsk;
@@ -34,10 +41,64 @@ To use in your project get the encrypt and decrypt function from object deconstr
     // Decrypted Message: Hajee Mohammad Danesh Science and Technology University
 ```
 
+### 🆕 Secure Password Hashing (v1.5.0)
+
+```php
+<?php
+    require 'vendor/autoload.php';
+    use CipherBsk\CipherBsk;
+
+    // Set environment variable for key (recommended)
+    putenv('CIPHER_BSK_KEY=your-secret-cipher-key');
+    
+    $cipherBsk = new CipherBsk();
+
+    // Hash a password with dual-layer encryption
+    $password = "my-secure-password";
+    $hashedPassword = $cipherBsk->secureHash($password);
+    echo "Hashed Password: $hashedPassword\n";
+    
+    // Verify password
+    $isValid = $cipherBsk->verifyHash($password, $hashedPassword);
+    echo "Password Valid: " . ($isValid ? "Yes" : "No") . "\n";
+    
+    // Wrong password verification
+    $isInvalid = $cipherBsk->verifyHash("wrong-password", $hashedPassword);
+    echo "Wrong Password Valid: " . ($isInvalid ? "Yes" : "No") . "\n";
+```
+
+### 🆕 Laravel Integration (v1.5.0)
+
+#### Using Facade:
+```php
+use CipherBsk;
+
+// Basic encryption
+$encrypted = CipherBsk::encrypt($message, $key);
+$decrypted = CipherBsk::decrypt($encrypted, $key);
+
+// Secure hashing (uses config/cipher-bsk.php key)
+$hash = CipherBsk::secureHash('password123');
+$isValid = CipherBsk::verifyHash('password123', $hash);
+```
+
+#### Configuration:
+Create `config/cipher-bsk.php`:
+```php
+<?php
+return [
+    'key' => env('CIPHER_BSK_KEY', env('APP_KEY')),
+];
+```
+
 ## Features
 - Avalanche effect 
 - Immune from frequency analysis attack
 - Output ranges from ASCII(0-255)
+- 🆕 **Dual-layer password hashing** (CipherBSK + bcrypt)
+- 🆕 **Laravel integration** with auto-discovery
+- 🆕 **Environment-based key management**
+- ✅ **Backward compatible** with existing code
 
 ## Documentations
 - Published paper: [DOI: 10.5120/ijca2021921290](https://www.ijcaonline.org/archives/volume183/number2/31897-2021921290)

@@ -1,6 +1,7 @@
 {
     "name": "sham3r/cipher-bsk",
-    "description": "A lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library aims to provide robust data security with an easy-to-use API. For more details, visit: https://bit.ly/cipher-bsk",
+    "version": "1.1.0",
+    "description": "A lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library provides robust data security with secure hashing capabilities and Laravel-native support. For more details, visit: https://bit.ly/cipher-bsk",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -22,7 +23,32 @@
     "require": {
         "php": ">=7.4"
     },
+    "suggest": {
+        "illuminate/support": "Required for Laravel integration (^8.0|^9.0|^10.0|^11.0)",
+        "illuminate/config": "Required for Laravel configuration support"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^10.5"
-    }
+        "phpunit/phpunit": "^10.5",
+        "illuminate/support": "^10.49"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CipherBsk\\Laravel\\CipherBskServiceProvider"
+            ],
+            "aliases": {
+                "CipherBsk": "CipherBsk\\Facades\\CipherBsk"
+            }
+        }
+    },
+    "keywords": [
+        "encryption",
+        "cipher",
+        "security",
+        "cryptography",
+        "vigenere",
+        "laravel",
+        "hash",
+        "verification"
+    ]
 }
