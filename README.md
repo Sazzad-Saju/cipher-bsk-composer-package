@@ -1,7 +1,7 @@
 # cipher-bsk-composer-package
 Bornomala Symmetric Key (BSK) stream cipher, is a lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library aims to provide robust data security with an easy-to-use API. For more details, visit: https://bit.ly/cipher-bsk
 
-### 🔐 New in v1.1.0
+### 🔐 New in v1.1.1
 - Added `secureHash()` and `verifyHash()` for dual-layer password encryption.
 - Added Laravel integration (config, service provider, and facade).
 - Backward compatible with v1.0.
@@ -39,7 +39,7 @@ echo "Decrypted Message: $decryptedMessage\n";
 // Decrypted Message: Hajee Mohammad Danesh Science and Technology University
 ```
 
-### 🆕 Secure Password Hashing (v1.1.0)
+### 🆕 Secure Password Hashing (v1.1.1)
 
 **Note:** You must set an environment variable for secure hashing:
 
@@ -69,7 +69,7 @@ $isInvalid = $cipherBsk->verifyHash("wrongpassword", $hashedPassword);
 echo "Wrong Password Valid: " . ($isInvalid ? "Yes" : "No") . "\n";
 ```
 
-### 🆕 Laravel Integration (v1.1.0)
+### 🆕 Laravel Integration (v1.1.1)
 
 #### Auto-Discovery Setup
 The package automatically registers itself in Laravel applications. No manual setup required!
@@ -191,7 +191,7 @@ $encrypted = $cipher->encrypt($message, $key);
 $decrypted = $cipher->decrypt($encrypted, $key);
 ```
 
-### New Users (v1.1.0+)
+### New Users (v1.1.1+)
 Access to both original and new features:
 ```php
 // Original features

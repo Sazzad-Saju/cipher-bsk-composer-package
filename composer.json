@@ -1,6 +1,6 @@
 {
     "name": "sham3r/cipher-bsk",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library provides robust data security with secure hashing capabilities and Laravel-native support. For more details, visit: https://bit.ly/cipher-bsk",
     "type": "library",
     "license": "MIT",
