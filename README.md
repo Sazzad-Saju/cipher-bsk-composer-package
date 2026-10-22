@@ -1,5 +1,34 @@
-# cipher-bsk-composer-package
-Bornomala Symmetric Key (BSK) stream cipher, is a lightweight encryption library implementing techniques from the research paper 'A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security' by Sazzad Saju. This library aims to provide robust data security with an easy-to-use API. For more details, visit: https://bit.ly/cipher-bsk
+# Cipher BSK — PHP and Laravel Encryption Package
+
+**`sham3r/cipher-bsk`** is the Composer package for **Cipher BSK (Bornomala Symmetric Key)**, developed by **Sazzad Hossain Saju**. It brings the cipher model, originally implemented in C++, to PHP applications through a reusable API for text encryption and decryption.
+
+The package works in standalone PHP projects and integrates with Laravel through configuration, a service provider, and a facade. Version 1.1.1 added `secureHash()` and `verifyHash()`, combining bcrypt password hashing with Cipher BSK encryption while retaining the existing `encrypt()` and `decrypt()` methods.
+
+**[View on Packagist](https://packagist.org/packages/sham3r/cipher-bsk) · [Try Cipher BSK Web](https://sazzad-saju.github.io/cipher-bsk-web/) · [Read the project story on Medium](https://medium.com/@sham3r/cipher-bsk-from-a-simple-experiment-to-practical-solutions-my-passionate-journey-in-cryptography-d5de4e83add5)**
+
+## Research Background
+
+The underlying cipher model is documented in **[A Hybrid Cryptographic Scheme of Modified Vigenère Cipher using Randomized Approach for Enhancing Data Security](https://www.ijcaonline.org/archives/volume183/number2/31897-2021921290/)**, authored by **Sazzad Hossain Saju, Sayed Mahmudul Haque, and Liakot Hossain Lingcon**.
+
+Published in the *International Journal of Computer Applications*, **Volume 183, Number 2, May 2021, pages 1–8**, the paper explores a modified Vigenère-based symmetric cipher using key generation, substitution, rearrangement, and padding. It combines that cipher with RSA to encrypt the symmetric key for its intended recipient.
+
+**DOI:** [10.5120/ijca2021921290](https://doi.org/10.5120/ijca2021921290) · **[Find the paper on Google Scholar](https://scholar.google.com/scholar?q=A+Hybrid+Cryptographic+Scheme+of+Modified+Vigenere+Cipher+using+Randomized+Approach+for+Enhancing+Data+Security)**
+
+This Composer package implements the PHP Cipher BSK component and adds application-level helpers and Laravel integration. The password helpers are later package features; RSA and the planned image-steganography integration are separate parts of the wider project.
+
+The paper documents the experimental design and its analysis. Publication and observed output behavior do not establish blanket immunity to cryptographic attacks.
+
+If you use or build on this model in your research, please cite the original paper.
+
+## Package at a Glance
+
+| Capability | API or integration |
+| --- | --- |
+| Text encryption and decryption | `encrypt($message, $key)` and `decrypt($ciphertext, $key)` |
+| Password protection and verification | `secureHash($password)` and `verifyHash($password, $storedValue)` |
+| Standalone PHP usage | Composer autoloading and the `CipherBsk\\CipherBsk` class |
+| Laravel usage | Auto-discovery, facade, service container, and published configuration |
+| Key configuration for password helpers | `CIPHER_BSK_KEY` with `APP_KEY` as fallback |
 
 ### 🔐 New in v1.1.1
 - Added `secureHash()` and `verifyHash()` for dual-layer password encryption.
@@ -180,34 +209,25 @@ CIPHER_BSK_KEY or APP_KEY.
 For Laravel projects: run "php artisan vendor:publish --tag=config" to publish the config file.
 ```
 
-## Compatibility
-
-### Existing Users (v1.0.x)
-All existing code continues to work without changes:
-```php
-// This still works exactly the same
-$cipher = new CipherBsk();
-$encrypted = $cipher->encrypt($message, $key);
-$decrypted = $cipher->decrypt($encrypted, $key);
-```
-
-### New Users (v1.1.1+)
-Access to both original and new features:
-```php
-// Original features
-$cipher = new CipherBsk();
-$encrypted = $cipher->encrypt($message, $key);
-
-// New secure hashing (requires environment key)
-putenv('CIPHER_BSK_KEY=your-key');
-$hash = $cipher->secureHash($password);
-$isValid = $cipher->verifyHash($password, $hash);
-```
 
 ## Documentation
 - **Published paper:** [DOI: 10.5120/ijca2021921290](https://www.ijcaonline.org/archives/volume183/number2/31897-2021921290)
-- **Online tool:** [BSK ONLINE](https://sazzad-saju.github.io/BSK-Online/)
+- **Online tool:** [Cipher BSK Web](https://sazzad-saju.github.io/cipher-bsk-web/)
 - **GitHub Repository:** [cipher-bsk-composer-package](https://github.com/Sazzad-Saju/cipher-bsk-composer-package)
+
+## The Cipher BSK Ecosystem
+
+This package is part of a series of open-source implementations and applications built around the same cipher model:
+
+- **[C++ console application](https://github.com/Sazzad-Saju/BSK-Stream-Cipher):** the original symmetric cipher implementation.
+- **[RSA component in Python](https://github.com/Sazzad-Saju/RSA_Algorithm):** public-key encryption of the Cipher BSK symmetric key.
+- **[JavaScript npm package](https://github.com/Sazzad-Saju/cipher-bsk-npm-package):** reusable encryption and decryption for JavaScript applications.
+- **[Cipher BSK Web](https://github.com/Sazzad-Saju/cipher-bsk-web):** a browser interface for experimenting with text encryption.
+- **[Browser encryption extension](https://github.com/Sazzad-Saju/cipher-bsk-extension)** and **[password manager extension](https://github.com/Sazzad-Saju/cipherbsk-pass-manager-ext)**.
+
+The planned image-steganography extension would embed both the BSK-encrypted message and the RSA-encrypted symmetric key inside an image. It is not included in this Composer package.
+
+[Read how the university experiment developed into this ecosystem on Medium](https://medium.com/@sham3r/cipher-bsk-from-a-simple-experiment-to-practical-solutions-my-passionate-journey-in-cryptography-d5de4e83add5).
 
 ## Testing
 
